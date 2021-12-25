@@ -1,248 +1,253 @@
-<?php 
-declare(strict_types=1);    
+<?php
+
+declare(strict_types=1);
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <?php
-    function a() {
+    function a()
+    {
         echo "<br>";
     }
-//     echo "Yaha hayyuk \n";
-//     $text = "KOAWKOWAKOWA";
-//     echo $text;
+    //     echo "Yaha hayyuk \n";
+    //     $text = "KOAWKOWAKOWA";
+    //     echo $text;
 
-//     //functions
-//     $x = 10;
-//     $y = 10;
+    //     //functions
+    //     $x = 10;
+    //     $y = 10;
 
-//     function plus() {
-//         //kalo mau ambil global variable harus di deklarasiin
-//         global $x, $y;
-//         echo $x + $y;
-//     }
+    //     function plus() {
+    //         //kalo mau ambil global variable harus di deklarasiin
+    //         global $x, $y;
+    //         echo $x + $y;
+    //     }
 
-//     plus();
-//     echo "<br>";
-//     //static keyword karena func variable hanya sekali jalan maka harus dikasih static agar value ya tetap
-//     //contoh make global value
-//     $z = 0;
-//     function incr() {
-//         global $z;
-//         $z++;
-//     }
+    //     plus();
+    //     echo "<br>";
+    //     //static keyword karena func variable hanya sekali jalan maka harus dikasih static agar value ya tetap
+    //     //contoh make global value
+    //     $z = 0;
+    //     function incr() {
+    //         global $z;
+    //         $z++;
+    //     }
 
-//     incr();
-//     incr();
-//     incr();
+    //     incr();
+    //     incr();
+    //     incr();
 
-//     echo $z . "<br>";
+    //     echo $z . "<br>";
 
-//     //pakai static
-//     function increment() {
-//         static $a = 0;
-//         $a++;
-//         echo $a . " <br> ";
-//     }
-//     //karena local scope jadi gk bisa echo
-//     increment();
+    //     //pakai static
+    //     function increment() {
+    //         static $a = 0;
+    //         $a++;
+    //         echo $a . " <br> ";
+    //     }
+    //     //karena local scope jadi gk bisa echo
+    //     increment();
 
-//     //return strlen alias str.length;
-//     $myText = "KOWAKOAWKOWAOWAKOAWKO A B C D E F";
-//     echo strlen($myText) . "<br>";
-//     //return word str
-//     echo str_word_count($myText);
-//     echo "<br>";
-//     //reverse string. kalo di js ngotak dlu
-//     echo strrev($myText);
-//     echo "<br>";
-    
-//     //cari string
-//     echo strpos($myText, "A B");
+    //     //return strlen alias str.length;
+    //     $myText = "KOWAKOAWKOWAOWAKOAWKO A B C D E F";
+    //     echo strlen($myText) . "<br>";
+    //     //return word str
+    //     echo str_word_count($myText);
+    //     echo "<br>";
+    //     //reverse string. kalo di js ngotak dlu
+    //     echo strrev($myText);
+    //     echo "<br>";
 
-//     //replace ada 3 param. ke-1 yg mau diganti, ke-2 yang pengganti, ke 3 textnya
-//     echo "<br>";
-//     $repl = "Aku sayang kamu";
-//     echo str_replace("kamu", "dunia", $repl);
-//     echo "<br>";
-//     //return pi
-//     echo pi();
-//     echo "<br>";
-//     //max and min
-//     echo(min(1,2,10,20,5,6,4,100));
-//     echo "<br>";
-//     echo(max(1,2,10,20,5,6,4,100));
-//     echo "<br>";
-//     //return positive dari negative
-//     echo abs(-60);
-//     echo "<br>";
-//     //generate random numb
-//     echo rand();
-//     echo "<br>";
-//     //ngontrol random 
-//     echo rand(10, 100);
+    //     //cari string
+    //     echo strpos($myText, "A B");
 
-//     //buat const variables
-//     define("Aku", 123);
-//     echo Aku; //gk perlu variable lagi dan value ya constant
-//     echo "<br>";
-//     //buat const arr
-//     define("cars", [
-//         "BMW",
-//         "Supra",
-//         "Toyotah"
-//     ]);
+    //     //replace ada 3 param. ke-1 yg mau diganti, ke-2 yang pengganti, ke 3 textnya
+    //     echo "<br>";
+    //     $repl = "Aku sayang kamu";
+    //     echo str_replace("kamu", "dunia", $repl);
+    //     echo "<br>";
+    //     //return pi
+    //     echo pi();
+    //     echo "<br>";
+    //     //max and min
+    //     echo(min(1,2,10,20,5,6,4,100));
+    //     echo "<br>";
+    //     echo(max(1,2,10,20,5,6,4,100));
+    //     echo "<br>";
+    //     //return positive dari negative
+    //     echo abs(-60);
+    //     echo "<br>";
+    //     //generate random numb
+    //     echo rand();
+    //     echo "<br>";
+    //     //ngontrol random 
+    //     echo rand(10, 100);
 
-//     echo cars[0];
-//     echo "<br>";
-//     echo date("H");
-//     echo "<br>";
-//     //for each php
-//     $myArr = array(1,2,3,4,5);
-//     foreach ($myArr as $x => $i) {
-//         echo $x . $i . "<br>";
-//     }
+    //     //buat const variables
+    //     define("Aku", 123);
+    //     echo Aku; //gk perlu variable lagi dan value ya constant
+    //     echo "<br>";
+    //     //buat const arr
+    //     define("cars", [
+    //         "BMW",
+    //         "Supra",
+    //         "Toyotah"
+    //     ]);
 
-//     //foreach dengan pairs value
-//     $pairsArr = array("Peter"=>35, "Bento"=>13);
-//     foreach ($pairsArr as $nama => $umur) {
-//         echo " Nama : " . $nama . ", Umur : " . $umur;
-//     }
+    //     echo cars[0];
+    //     echo "<br>";
+    //     echo date("H");
+    //     echo "<br>";
+    //     //for each php
+    //     $myArr = array(1,2,3,4,5);
+    //     foreach ($myArr as $x => $i) {
+    //         echo $x . $i . "<br>";
+    //     }
 
-//     //functions
-//     function name($val) {
-//         echo $val;
-//     }
+    //     //foreach dengan pairs value
+    //     $pairsArr = array("Peter"=>35, "Bento"=>13);
+    //     foreach ($pairsArr as $nama => $umur) {
+    //         echo " Nama : " . $nama . ", Umur : " . $umur;
+    //     }
 
-//     name("Sasuke");
-//     name("Madara");
-//     name("Naruto");
-//     a();
-//     //default value
-//     function setHeight($height = 100) {
-//         echo $height;
-//     }
+    //     //functions
+    //     function name($val) {
+    //         echo $val;
+    //     }
 
-//     setHeight();
-//     a();
-//     setHeight(50);
+    //     name("Sasuke");
+    //     name("Madara");
+    //     name("Naruto");
+    //     a();
+    //     //default value
+    //     function setHeight($height = 100) {
+    //         echo $height;
+    //     }
 
-//     //spesifik return value type
-//     function addNumbers(float $a, float $b) : float {
-//         return $a + $b;
-//     }
-//     a();
-//     echo addNumbers(1.5,1.4);
+    //     setHeight();
+    //     a();
+    //     setHeight(50);
 
-//     a();
-//     function addNum(float $a, float $b) {
-//         return $a + $b;
-//     }
+    //     //spesifik return value type
+    //     function addNumbers(float $a, float $b) : float {
+    //         return $a + $b;
+    //     }
+    //     a();
+    //     echo addNumbers(1.5,1.4);
 
-//     echo addNum(1.3,2.2);
-// a();
-//     //php array
-//     $myFirstArray = array(1,2,3,4,5);
-//     foreach ($myFirstArray as $x) {
-//         echo $x;
-//     }
-//     a();
-//     //return length
-//     echo count($myFirstArray);
-//     a();
-//     for ($i = 0; $i < count($myFirstArray); $i++) {
-//         echo $i;
-//     }
+    //     a();
+    //     function addNum(float $a, float $b) {
+    //         return $a + $b;
+    //     }
 
-//     //assoc array;
-//     $myArr1 = array("Peterpan"=>"31", "Sasuke"=>"20", "Naruto"=>"21");
-//     a();
-//     echo "Naruto berumur " . $myArr1["Naruto"] . " Tahun";
+    //     echo addNum(1.3,2.2);
+    // a();
+    //     //php array
+    //     $myFirstArray = array(1,2,3,4,5);
+    //     foreach ($myFirstArray as $x) {
+    //         echo $x;
+    //     }
+    //     a();
+    //     //return length
+    //     echo count($myFirstArray);
+    //     a();
+    //     for ($i = 0; $i < count($myFirstArray); $i++) {
+    //         echo $i;
+    //     }
 
-//     //multidimensi array
-//     /* kalo Javascript 
-//     let myArr = [
-//         [1,2],
-//         [3,4],
-//         [5,6]
-//     ]
-//     */
+    //     //assoc array;
+    //     $myArr1 = array("Peterpan"=>"31", "Sasuke"=>"20", "Naruto"=>"21");
+    //     a();
+    //     echo "Naruto berumur " . $myArr1["Naruto"] . " Tahun";
 
-//     $myMultiArr = array(
-//         array("Volvo", 12, 13),
-//         array("BMW",12,43)
-//     );
+    //     //multidimensi array
+    //     /* kalo Javascript 
+    //     let myArr = [
+    //         [1,2],
+    //         [3,4],
+    //         [5,6]
+    //     ]
+    //     */
 
-//     for ($i = 0; $i < count($myMultiArr); $i++) {
-//         echo "<p> Row : $i </p>";
-//         echo "<ul>";
-//         for ($j = 0; $j < 3; $j++) {
-//             echo "<li>" . $myMultiArr[$i][$j] . "</li>";
-//         }
-//         echo "</ul>";
-//     }
+    //     $myMultiArr = array(
+    //         array("Volvo", 12, 13),
+    //         array("BMW",12,43)
+    //     );
 
-//     //sorting array php
-//     $mySortArr = array("A", "b", "B", "C", "Z", "AS", "GDF");
-//     $mySortNumb = array(1,3,5,6,3,5,685,24,58247581347,235,245,2348564);
-    
-//     //dari kecil
-//     sort($mySortArr);
-//     foreach ($mySortArr as $x) {
-//         echo $x;
-//     }
-    
-//     rsort($mySortArr);
-//     foreach ($mySortArr as $x) {
-//         echo $x;
-//     }
-//     //dari besar
-//     a();
-//     //sort assoc array
-//     //sort() asc rsort() desc
-//     //asort dari value ksort dari key; aksort dan krsort
-//     $myPairsArr = array("Iqro"=>"JUZ 30", "Sasuke"=>"Juz 29", "Naruto"=>"JUZ 1");
-//     ksort($myPairsArr);
-//     foreach ($myPairsArr as $key => $val) {
-//         echo $key . $val . "<br>";
-//     }
+    //     for ($i = 0; $i < count($myMultiArr); $i++) {
+    //         echo "<p> Row : $i </p>";
+    //         echo "<ul>";
+    //         for ($j = 0; $j < 3; $j++) {
+    //             echo "<li>" . $myMultiArr[$i][$j] . "</li>";
+    //         }
+    //         echo "</ul>";
+    //     }
 
-    
-//     //Superglobals
-//     //$GLOBALS;
-//     $c = 5;
-//     $d = 30;
-//     function mult() {
-//         global $c, $d;
-//         $GLOBALS['z'] = $c + $d; 
-//     }
+    //     //sorting array php
+    //     $mySortArr = array("A", "b", "B", "C", "Z", "AS", "GDF");
+    //     $mySortNumb = array(1,3,5,6,3,5,685,24,58247581347,235,245,2348564);
 
-//     mult();
-//     echo $z;
+    //     //dari kecil
+    //     sort($mySortArr);
+    //     foreach ($mySortArr as $x) {
+    //         echo $x;
+    //     }
 
-//     //server
-//     echo $_SERVER['PHP_SELF'];
-//     echo "<br>";
-//     echo $_SERVER['SERVER_NAME'];
-//     echo "<br>";
-//     echo $_SERVER['HTTP_HOST'];
-//     echo "<br>";
-//     echo $_SERVER['HTTP_USER_AGENT'];
-//     echo "<br>";
-//     echo $_SERVER['SCRIPT_NAME'];
-//     a();
+    //     rsort($mySortArr);
+    //     foreach ($mySortArr as $x) {
+    //         echo $x;
+    //     }
+    //     //dari besar
+    //     a();
+    //     //sort assoc array
+    //     //sort() asc rsort() desc
+    //     //asort dari value ksort dari key; aksort dan krsort
+    //     $myPairsArr = array("Iqro"=>"JUZ 30", "Sasuke"=>"Juz 29", "Naruto"=>"JUZ 1");
+    //     ksort($myPairsArr);
+    //     foreach ($myPairsArr as $key => $val) {
+    //         echo $key . $val . "<br>";
+    //     }
 
-//     //regexp php
-//     $texts = "Ore no yabou";
-//     $regexp = "/yabou/i";
-//     //return 1 jika ada return 0 jika tak ada
-//     echo preg_match($regexp, $texts);
+
+    //     //Superglobals
+    //     //$GLOBALS;
+    //     $c = 5;
+    //     $d = 30;
+    //     function mult() {
+    //         global $c, $d;
+    //         $GLOBALS['z'] = $c + $d; 
+    //     }
+
+    //     mult();
+    //     echo $z;
+
+    //     //server
+    //     echo $_SERVER['PHP_SELF'];
+    //     echo "<br>";
+    //     echo $_SERVER['SERVER_NAME'];
+    //     echo "<br>";
+    //     echo $_SERVER['HTTP_HOST'];
+    //     echo "<br>";
+    //     echo $_SERVER['HTTP_USER_AGENT'];
+    //     echo "<br>";
+    //     echo $_SERVER['SCRIPT_NAME'];
+    //     a();
+
+    //     //regexp php
+    //     $texts = "Ore no yabou";
+    //     $regexp = "/yabou/i";
+    //     //return 1 jika ada return 0 jika tak ada
+    //     echo preg_match($regexp, $texts);
 
     //ADVANCED
     //date
@@ -275,7 +280,7 @@ declare(strict_types=1);
     echo date("d-m-y, H:s:a", $d);
     a();
     //strtotime
-    $e=strtotime("10:30pm April 15 2014");
+    $e = strtotime("10:30pm April 15 2014");
     echo "Created date is " . date("Y-m-d h:i:sa", $e);
     a();
     $tomorrow = strtotime("tomorrow");
@@ -294,7 +299,7 @@ declare(strict_types=1);
 
     //readfile
     echo readfile("webdict.txt");
-a();
+    a();
     //fopen fwrite fread fclose
     // r read w write a write dari recent x newfile, dan r+ w+ a+ x+
     $myFile = fopen("webdict.txt", "r") or die("ERROR!");
@@ -306,66 +311,65 @@ a();
     //     fwrite($myF, "ABC");
     //     fclose($myF);
     // }
-        a();
+    a();
     //cookies
     // / untuk work di semua website kita
     $cookiename = "name";
     $cookievalue = "Iqro Negoro";
     setcookie($cookiename, $cookievalue, time() + 60 * 60 * 24 * 30);
-    echo $_COOKIE["name"];
+    echo $_COOKIE["name"]; 
+    a();
+    //session harus nyalain sessios_start(d)
+    $_SESSION["nama"] = "Iqro";
+    echo $_SESSION["nama"];
+    //pakai session unset jika mau hapus semua sesi
+
+    // filter
+    ?>
+    <table style="text-align: center; border-collapse: collapse;" border="2" cellpadding="0">
+        <tr>
+            <td> Nama Filter </td>
+            <td> Filter ID</td>
+        </tr>
+        <?php 
+        foreach(filter_list() as $nama => $id) :
+        ?>
+        <tr>
+            <td><?php echo $nama ?></td>
+            <td><?php echo $id ?></td>
+        </tr>
+        <?php 
+        endforeach
+        ?>
+    </table>
+    <?php 
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //filter var
+    $str = "<h1> Iqro Negoro </h1>";
+    $sanitize = filter_var($str, FILTER_SANITIZE_STRING);
+    echo $sanitize;
+    a();
+    $integ = "";
+    if (filter_var($integ, FILTER_VALIDATE_INT)) {
+        echo "True";
+    } else echo "False";
+    a();
+    $ip = "127.0.0.1";
+    if (filter_var($ip, FILTER_VALIDATE_IP)) {
+        echo "Ip";
+    } else echo "Not ip";
+    a();
+    $email = "iqronegoro0@gmail.com";
+    if (filter_var($email, FILTER_VALIDATE_EMAIL) && filter_var($email, FILTER_SANITIZE_STRING)) {
+        echo "yes";
+    } else echo "no";
+    a();
+    $url = "https://w3schools.com";
+    if (filter_var($url, FILTER_SANITIZE_URL) && filter_var($url, FILTER_VALIDATE_URL)) {
+        echo "Yes";
+    } else echo "Error";
 
     ?>
 </body>
+
 </html>
-
-
-      
