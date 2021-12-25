@@ -306,10 +306,14 @@ a();
     //     fwrite($myF, "ABC");
     //     fclose($myF);
     // }
-
-
-
-
+        a();
+    //cookies
+    // / untuk work di semua website kita
+    $cookiename = "name";
+    $cookievalue = "Iqro Negoro";
+    setcookie($cookiename, $cookievalue, time() + 60 * 60 * 24 * 30);
+    echo $_COOKIE["name"];
+    
 
 
 
