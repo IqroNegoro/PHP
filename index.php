@@ -18,6 +18,7 @@ session_start();
     function a()
     {
         echo "<br>";
+        echo "<br>";
     }
     //     echo "Yaha hayyuk \n";
     //     $text = "KOAWKOWAKOWA";
@@ -377,9 +378,72 @@ session_start();
     if (filter_var($int, FILTER_VALIDATE_INT, array("options" => array("min_range" => $min, "max_range" => $max)))) echo "Not exceeding"; else echo "exceed";
     a();
     $ip = "2001:0db8:85a3:08d3:1319:8a2e:0370:7334";
-    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) echo "IPv6"; else echo "Not IPv6"
+    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) echo "IPv6"; else echo "Not IPv6";
 
-    ?>
+    //Callback functions PHP
+    function my_callback($item) {
+        return strlen($item);
+    }
+
+    $string = ["Apple", "Pai", "Banana", "coconut"];
+    $lengths = array_map("my_callback", $string);
+    print_r($lengths);
+
+    // JSON encode dan decode, encode alias JSON.stringify decode alias JSON.parse
+    $myArr2 = ["Nama" => "Iqro", "Password" => "IqroNegoro"];
+    echo json_encode($myArr2);
+    $myArr2Dec = json_encode($myArr2);
+    print_r(json_decode($myArr2Dec, true));
+
+    //Indexed array
+    $iMyArr = ["Satu", "Dua", "Tiga", 4, 5, 6];
+    echo json_encode($iMyArr);
+    // exception
+   
+    function divider($dividend, $divisor) {
+        if ($divisor === 0) {
+            throw new Exception("Division by zero");
+        }
+        return $dividend / $divisor;
+    }
+    a();
+    echo divider(10, 5);
+   
+    //try and catch
+    function add($int1, $int2) {
+        if ($int1 > -1) {
+            throw new Exception("Cannot add number with negative");
+        }
+        return $int1 + $int2;
+    }
+
+    try {
+        add(10,1);
+    } catch(Exception $err) {
+        echo $err;
+    }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   ?>
+
+
+
 </body>
 
 </html>
