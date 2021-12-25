@@ -318,7 +318,7 @@ session_start();
     $cookiename = "name";
     $cookievalue = "Iqro Negoro";
     setcookie($cookiename, $cookievalue, time() + 60 * 60 * 24 * 30);
-    echo $_COOKIE["name"]; 
+    echo $_COOKIE["name"];
     a();
     //session harus nyalain sessios_start(d)
     $_SESSION["nama"] = "Iqro";
@@ -332,19 +332,19 @@ session_start();
             <td> Nama Filter </td>
             <td> Filter ID</td>
         </tr>
-        <?php 
-        foreach(filter_list() as $nama => $id) :
+        <?php
+        foreach (filter_list() as $nama => $id) :
         ?>
-        <tr>
-            <td><?php echo $nama ?></td>
-            <td><?php echo $id ?></td>
-        </tr>
-        <?php 
+            <tr>
+                <td><?php echo $nama ?></td>
+                <td><?php echo $id ?></td>
+            </tr>
+        <?php
         endforeach
         ?>
     </table>
-    <?php 
-    
+    <?php
+
     //filter var
     $str = "<h1> Iqro Negoro </h1>";
     $sanitize = filter_var($str, FILTER_SANITIZE_STRING);
@@ -375,13 +375,16 @@ session_start();
     $min = 50;
     $max = 200;
 
-    if (filter_var($int, FILTER_VALIDATE_INT, array("options" => array("min_range" => $min, "max_range" => $max)))) echo "Not exceeding"; else echo "exceed";
+    if (filter_var($int, FILTER_VALIDATE_INT, array("options" => array("min_range" => $min, "max_range" => $max)))) echo "Not exceeding";
+    else echo "exceed";
     a();
     $ip = "2001:0db8:85a3:08d3:1319:8a2e:0370:7334";
-    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) echo "IPv6"; else echo "Not IPv6";
+    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) echo "IPv6";
+    else echo "Not IPv6";
 
     //Callback functions PHP
-    function my_callback($item) {
+    function my_callback($item)
+    {
         return strlen($item);
     }
 
@@ -399,8 +402,9 @@ session_start();
     $iMyArr = ["Satu", "Dua", "Tiga", 4, 5, 6];
     echo json_encode($iMyArr);
     // exception
-   
-    function divider($dividend, $divisor) {
+
+    function divider($dividend, $divisor)
+    {
         if ($divisor === 0) {
             throw new Exception("Division by zero");
         }
@@ -408,9 +412,10 @@ session_start();
     }
     a();
     echo divider(10, 5);
-   
+
     //try and catch
-    function add($int1, $int2) {
+    function add($int1, $int2)
+    {
         if ($int1 > -1) {
             throw new Exception("Cannot add number with negative");
         }
@@ -418,29 +423,66 @@ session_start();
     }
 
     try {
-        add(10,1);
-    } catch(Exception $err) {
+        add(10, 1);
+    } catch (Exception $err) {
         echo $err;
     }
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   ?>
+
+    a();
+    // OOP
+
+    class Car {
+        public $model;
+        public $color;
+        public $weight;
+        //constructor kaya di javascript aj
+        function __construct($model, $color, $weight)
+        {
+            $this->model = $model;
+            $this->color = $color;
+            $this->weight = $weight;
+        }
+        //descturtor otomatis di panggil saat pembuatan object kelar
+        function __destruct()
+        {
+            echo "Model : $this->model, Color : $this->color, Weight : $this->weight";
+        }
+    }
+    //comment dlu. gk mw ngilang
+    // $toyota = new Car("Toyota", "Silver", "10kg");
+    
+    // extending class inheritance
+    class Bunga {
+        public $nama;
+        
+        function __construct($nama) {
+            $this->nama = $nama;
+        }
+
+        function intro() {
+            echo "I am $this->nama, A Beautiful Flower";
+        }
+    }
+
+    // $sunflower = new Bunga("Sunflower");
+    // echo $sunflower->intro();
+
+    //acces modifier
+    class Fruit {
+        public $fruit;
+        protected $color;
+        private $weight;
+
+        function __construct($fruit, $color, $weight)
+        {
+            $this->fruit = $fruit;
+            $this->color = $color;
+            $this->weight = $weight;
+        }
+
+    }
+
+    ?>
 
 
 
