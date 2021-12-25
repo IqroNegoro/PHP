@@ -361,13 +361,23 @@ session_start();
     a();
     $email = "iqronegoro0@gmail.com";
     if (filter_var($email, FILTER_VALIDATE_EMAIL) && filter_var($email, FILTER_SANITIZE_STRING)) {
-        echo "yes";
-    } else echo "no";
+        echo "valid email";
+    } else echo "not valid email";
     a();
     $url = "https://w3schools.com";
     if (filter_var($url, FILTER_SANITIZE_URL) && filter_var($url, FILTER_VALIDATE_URL)) {
-        echo "Yes";
-    } else echo "Error";
+        echo "Valid url";
+    } else echo "Not valid url";
+    a();
+    //minmax
+    $int = 100;
+    $min = 50;
+    $max = 200;
+
+    if (filter_var($int, FILTER_VALIDATE_INT, array("options" => array("min_range" => $min, "max_range" => $max)))) echo "Not exceeding"; else echo "exceed";
+    a();
+    $ip = "2001:0db8:85a3:08d3:1319:8a2e:0370:7334";
+    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) echo "IPv6"; else echo "Not IPv6"
 
     ?>
 </body>
