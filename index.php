@@ -421,7 +421,7 @@ session_start();
         }
         return $int1 + $int2;
     }
-
+    
     try {
         add(10, 1);
     } catch (Exception $err) {
@@ -429,8 +429,8 @@ session_start();
     }
 
     a();
+    
     // OOP
-
     class Car {
         public $model;
         public $color;
@@ -450,37 +450,275 @@ session_start();
     }
     //comment dlu. gk mw ngilang
     // $toyota = new Car("Toyota", "Silver", "10kg");
-    
-    // extending class inheritance
-    class Bunga {
-        public $nama;
-        
-        function __construct($nama) {
-            $this->nama = $nama;
-        }
-
-        function intro() {
-            echo "I am $this->nama, A Beautiful Flower";
-        }
-    }
-
-    // $sunflower = new Bunga("Sunflower");
-    // echo $sunflower->intro();
-
     //acces modifier
+    // public - the property or method can be accessed from everywhere. This is default 
+    // protected - the property or method can be accessed within the class and by classes derived from that class (dari dalem bukan dari object langsung)
+    // private - the property or method can ONLY be accessed within the class
+    //final untuk preventing inheritance
+
     class Fruit {
         public $fruit;
         protected $color;
         private $weight;
 
-        function __construct($fruit, $color, $weight)
-        {
+        function set_name($fruit) {
             $this->fruit = $fruit;
-            $this->color = $color;
-            $this->weight = $weight;
         }
 
+        protected function set_color($color) {
+            $this->color = $color;
+        }
+
+        private function set_weight($weight) {
+            $this->weight = $weight;
+        }
+        // function __construct($fruit, $color, $weight)
+        // {
+        //     $this->fruit = $fruit;
+        //     $this->color = $color;
+        //     $this->weight = $weight;
+        // }
     }
+    
+    $mango = new Fruit();
+    $mango->fruit = "Manggo";
+    // $mango->color = "Red"; // error karena protected
+    // $mango->weight = "1kg"; //error karena private
+    
+    $berry = new Fruit();
+    $berry->set_name("berry");
+    // $berry->set_color("red");
+    // $berry->set_weight("1kg");
+    
+    //inheritance
+    
+    // extending class inheritance
+    class Bunga {
+        public $name;
+        public $color;
+
+        public function __construct($name, $color) {
+            $this->name = $name;
+            $this->color = $color;
+        }
+
+        public function intro() {
+            echo "I {$this->name}, have a beautiful {$this->color} color. ";
+        }
+
+        protected function outro() {
+            echo "Yes, i am beauty ";
+        }
+}
+    // $tulip = new Bunga("Tulip", "Yellow");
+    // $tulip->intro();
+
+    class Tulip extends Bunga {
+        public function message() {
+            echo "I am Beautiful? ";
+            $this->outro();
+        }
+
+        // panggil dari dalam
+    }
+
+    $tulip = new Tulip("Tulip", "Red");
+    $tulip->intro();
+    $tulip->message();
+    // $tulip->death(); // error karena protected dan gk bs dipanggil dalem object langsung
+    a();
+    // constant class
+    //jika bisa UPPERCASE saja
+    // kalo mau dipanggil harus make ::
+    class Cons {
+        const MESSAGE = "Hai, im constact variable";
+
+        public function messaging() {
+            echo self::MESSAGE;
+        }
+    }
+
+    $myConst = new Cons();
+    $myConst->messaging();
+
+    // abstact classes
+    /*
+    
+    Abstract classes and methods are when the parent class has a named method, but need its child class(es) to fill out the tasks.
+    An abstract class is a class that contains at least one abstract method. An abstract method is a method that is declared, but not implemented in the code.
+    
+    intinya method yg di inherit harus sama type data ( () : type ) 
+    */
+
+    abstract class Cup {
+        public $name;
+        public function __construct($name)
+        {
+            $this->name = $name;
+        }
+
+        abstract public function intro() : string;
+    }
+
+    class Plastik extends Cup {
+        public function intro() : string {
+            return "I am {$this->name}";
+        }
+    }
+    a();
+    $gelasPlastik = new Plastik("Ungu");
+    echo $gelasPlastik->intro();
+
+    /*
+    
+    Interfaces allow you to specify what methods a class should implement.
+    Interfaces make it easy to use a variety of different classes in the same way. When one or more classes use the same interface, it is referred to as "polymorphism".
+    
+    */
+
+    interface Animal {
+        public function makeSound();
+    }
+
+    class Cat implements Animal {
+        public function makeSound() {
+            echo "Nyaa!~";
+        }
+    }
+    a();
+    $cat = new Cat();
+    $cat->makeSound();
+
+    /*
+    
+     let's say that we would like to write software which manages a group of animals. There are actions that all of the animals can do, but each animal does it in its own way.
+    
+    */
+
+    class Dog implements Animal {
+        public function makeSound() {
+            echo "Barking~";
+        }
+    }
+
+    class Monkey implements Animal {
+        public function makeSound() {
+            echo "u aa u aa";
+        }
+    }
+    a();
+    $monkey = new Monkey();
+    echo $monkey->makeSound();
+    a();
+    $dog = new Dog();
+    echo $dog->makeSound();
+
+    //traits 
+    // make multiple method class
+    trait myTrait1 {
+        public function msg1() {
+            echo "This is trait one";
+        }
+    }
+
+    trait myTrait2 {
+        public function msg2() {
+            echo "This is trait two";
+        }
+    }
+
+    class Traitoda {
+        use myTrait1, myTrait2;
+    }
+    a();
+    $myTraits = new Traitoda();
+    echo $myTraits->msg1();
+    a();
+    echo $myTraits->msg2();
+
+    // Static methods
+    // bisa langsung dipanggil tanpa harus buat instance
+    class myStatic {
+        public static function staticMethod() {
+            echo "Ini static";
+        }
+    }
+    a();
+    myStatic::staticMethod();
+
+    class Greeting {
+        public static function greet() {
+            echo "Hi, im Iqro";
+        }
+    }
+
+    class SomeGreeting {
+        public function hello() {
+            Greeting::greet();
+        }
+    }
+    a();
+    $greet = new SomeGreeting();
+    echo $greet->hello();
+
+    // static properties
+    class myStaticProperty {
+        public static $myNama = "Iqro Negoro";
+    }
+
+    echo myStaticProperty::$myNama;
+
+    // php iterables
+    function printIterable(iterable $myIterable) {
+        foreach ($myIterable as $x) {
+            echo $x;
+        }
+    }
+    a();
+    $arr = ["1", "A", "2", "B", "c", "3"];
+    printIterable($arr);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     ?>
 
