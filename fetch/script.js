@@ -21,18 +21,14 @@ function addData(data) {
     return item;
 }
 
+
 w.addEventListener("message", e => {
     let data = e.data;
     let length = data.length
     let count = JSON.parse(localStorage.getItem("count"))
-    if (count < length) {
+    if (count < length || count === length) {
         table.innerHTML = addData(data)
         count = length;
-    } else {
-        if (length === 0) {
-            table.innerHTML = addData(data)
-            count = length;
-        }
     }
     localStorage.setItem("count", JSON.stringify(count))
 })

@@ -13,6 +13,6 @@ async function fetchs() {
 
 setInterval(() => {
     fetchs()
-}, 10);
+}, 500);
 
 fetchs();
