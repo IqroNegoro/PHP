@@ -16,11 +16,9 @@ function addData(data) {
             <td> ${el.nama} </td>
             <td> ${el.tanggal} </td>
         </tr>
-    `
-        )
+    `)
     return item;
 }
-
 
 w.addEventListener("message", e => {
     let data = e.data;
@@ -29,6 +27,11 @@ w.addEventListener("message", e => {
     if (count < length || count === length) {
         table.innerHTML = addData(data)
         count = length;
+    } else {
+        if (length === 0) {
+            table.innerHTML = "";
+            count = length;
+        }
     }
     localStorage.setItem("count", JSON.stringify(count))
 })
