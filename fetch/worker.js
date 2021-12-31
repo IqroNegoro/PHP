@@ -2,7 +2,7 @@ function fetching() {
     return fetch("fetching.php").then(resp => resp.json()).then(resp => resp.data).catch(err => err)
 }
 
-async function fetchs(fetching) {
+async function fetchs() {
     try {
         let data = await fetching();
         postMessage(data)
@@ -13,6 +13,6 @@ async function fetchs(fetching) {
 
 setInterval(() => {
     fetchs()
-}, 10000);
+}, 100);
 
-fetchs(fetching)
+fetchs()
