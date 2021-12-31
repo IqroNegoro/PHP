@@ -1,32 +1,38 @@
+// ambil dom html
 const table = document.querySelector(".container table tbody")
-let ids = 0;
 
+let w = new Worker("worker.js");
 
-function fetching() {
-    return fetch("fetching.php").then(resp => resp.json()).then(resp => resp.data).catch(err => err)
+if (!localStorage.getItem("count")) {
+    localStorage.setItem("count", "0")
 }
 
-async function fetchs(idData) {
-    try {
-        let data = await fetching();
-        if (data.length > ids) {
-            data.forEach(data => {
-                idData++
-                table.innerHTML += `
-                <tr> 
-                <td> ${data.id} </td>
-                <td> ${data.nama} </td>
-                <td> ${data.tanggal} </td>
-                </tr>
-                `
-            })
-            ids++
+function addData(data) {
+    let item = "";
+    let obj = data;
+    obj.forEach(el => item += `
+        <tr> 
+            <td> ${el.id} </td>
+            <td> ${el.nama} </td>
+            <td> ${el.tanggal} </td>
+        </tr>
+    `
+        )
+    return item;
+}
+
+w.addEventListener("message", e => {
+    let data = e.data;
+    let length = data.length
+    let count = JSON.parse(localStorage.getItem("count"))
+    if (count < length) {
+        table.innerHTML = addData(data)
+        count = length;
+    } else {
+        if (length === 0) {
+            table.innerHTML = addData(data)
+            count = length;
         }
-        console.log(data)
-    } catch(err) {
-
     }
-}
-
-fetchs(ids);
-console.log(ids)
+    localStorage.setItem("count", JSON.stringify(count))
+})
