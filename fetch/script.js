@@ -1,7 +1,8 @@
 // ambil dom html
 const table = document.querySelector(".container table tbody")
 
-let w = new Worker("worker.js");
+if (window.Worker) {
+    let w = new Worker("worker.js");
 
 if (!localStorage.getItem("count")) {
     localStorage.setItem("count", "0")
@@ -34,4 +35,24 @@ w.addEventListener("message", e => {
         }
     }
     localStorage.setItem("count", JSON.stringify(count))
+    
+})
+} else {
+    alert("Worker Tidak support")
+}
+
+const submitting = document.getElementById("submit");
+const nama = document.getElementById("nama");
+submitting.addEventListener("click", async () => {
+    let values = nama.value;
+    console.log(values)
+    return await fetch("sending.php", {
+        method : "POST",
+        headers: {
+            "Content-type" : "application/json"
+        },
+        body : JSON.stringify({
+            nama : values
+        })
+    }).then(resp => resp.json()).then(resp => console.log("Success :" + resp))
 })
